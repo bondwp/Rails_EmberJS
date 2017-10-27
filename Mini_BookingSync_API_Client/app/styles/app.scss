@@ -1,0 +1,37 @@
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+
+@import "rental";
+
+@import "ember-power-datepicker";
+
+$theme-color: #0f9d58;
+
+.custom-styles-overlay {
+  background-color: rgba($theme-color, .77);
+}
+
+.custom-styles-overlay,
+.custom-styles-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.custom-styles-modal-container {
+  background: #222;
+  color: white;
+  margin-left: -25px;
+  margin-top: 10px;
+  width: 380px;
+  text-align: center;
+
+  h1 {
+    color: $theme-color;
+  }
+}

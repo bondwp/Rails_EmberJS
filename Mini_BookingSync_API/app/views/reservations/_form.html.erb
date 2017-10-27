@@ -1,0 +1,21 @@
+<%= form_for([@rental, @rental.reservations.build]) do |form| %>
+
+  <div class="field">
+    <%= form.label :client_email %>
+    <%= form.text_field :client_email, id: :reservation_client_email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_at %>
+    <%= form.date_select :start_at, id: :reservation_start_at %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_at %>
+    <%= form.date_select :end_at, id: :reservation_end_at %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

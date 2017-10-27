@@ -1,0 +1,20 @@
+<p>
+  <b>Client email:</b>
+  <%= reservation.client_email %>
+</p>
+
+<p>
+  <b>start date:</b>
+  <%= reservation.start_at %>
+</p>
+
+<p>
+  <b>end date:</b>
+  <%= reservation.end_at %>
+</p>
+
+<p>
+  <%= link_to 'Destroy Reservation', [reservation.rental, reservation],
+              :confirm => 'Are you sure?',
+              :method => :delete %>
+</p>

@@ -1,0 +1,66 @@
+<div class="jumbo show-listing">
+	<h2 class="title">{{rental_detail.rental.name}}</h2>
+	<div class="right detail-section">
+		<div class="detail address">
+			<strong>Address:&nbsp;&nbsp;</strong>{{rental_detail.rental.address}}
+		</div>
+		<div class="detail daily-rate">
+			<strong>Daily Rate($):&nbsp;&nbsp;</strong>{{rental_detail.rental.daily_rate}}
+		</div>
+		<p class="description">{{rental_detail.rental.description}}</p>
+
+		<button {{action "toggleModal"}} class="submit">Book Now</button>
+	</div>
+	<img src="{{rental_detail.rental.photo}}" class="rental-pic">
+</div>
+
+<div class="jumbo show-listing">
+	<h3>Reservations</h3>
+	{{#each rental_detail.reservations as |reservation|}}
+		<div class="reservation-section">
+			<div class="detail client-email">
+				<strong>Client Email:&nbsp;&nbsp;</strong>{{reservation.client_email}}
+			</div>
+			<div class="detail start-at">
+				<strong>From:&nbsp;&nbsp;</strong>{{reservation.start_at}}
+			</div>
+			<div class="detail end-at">
+				<strong>To:&nbsp;&nbsp;</strong>{{reservation.end_at}}
+			</div>
+		</div>
+	{{/each}}
+</div>
+
+{{#if isShowingModal}}
+	{{#modal-dialog
+	    onClose='cancelReservation'
+	    containerClass='custom-styles-modal-container'
+	    overlayClass='custom-styles-overlay'
+	    wrapperClass='custom-styles-wrapper'
+	    overlayPosition='sibling'
+	    clickOutsideToClose=true
+	    targetAttachment='none'
+	    animatable=true
+	}}
+	  <h2>Welcome!</h2>
+	  <div class="booking-form">
+	  	<div class="right">
+	  		Client Email: {{input type="email" value=client_email required="required" placeholder="example@gmail.com"}}
+	  	</div>
+	  	<div class="right">
+	  		Start At: {{bootstrap-datepicker value=startAt placeholder="yyyy-mm-dd" format="yyyy-mm-dd" autoclose=true todayHighlight=true startDate="today" changeDate="changeDateAction" clearBtn=true}}
+	  	</div>
+	  	<div class="right">
+	  		End At: {{bootstrap-datepicker value=endAt placeholder="yyyy-mm-dd" format="yyyy-mm-dd" autoclose=true todayHighlight=true startDate="today" changeDate="changeDateAction" clearBtn=true}}
+	  	</div>
+	  	<div class="right">
+	  		Total Price($): {{input type="text" value=total_price readonly=true placeholder="0.00"}}
+	  	</div>
+	  </div>
+	  <div class="right">
+	  	<button class="submit" {{action 'submitReservation'}}>Book</button>
+	  	<button class="submit" {{action 'cancelReservation'}}>Cancel</button>
+	  </div>
+	{{/modal-dialog}}
+{{/if}}
+

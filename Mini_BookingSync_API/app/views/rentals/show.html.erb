@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rental.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @rental.address %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rental.description %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @rental.photo %>
+</p>
+
+<p>
+  <strong>Daily rate:</strong>
+  <%= @rental.daily_rate %>
+</p>
+
+<h2>Reservations</h2>
+<%= render @rental.reservations %>
+
+<h2>Add a Reservation:</h2>
+<%= render "reservations/form" %>
+
+<br />
+
+<%= link_to 'Edit', edit_rental_path(@rental) %> |
+<%= link_to 'Back', rentals_path %>

@@ -1,0 +1,13 @@
+<article class="listing">
+	<a {{action 'toggleImageSize'}} class="image {{if isWide "wide"}}">
+		<img src="{{rental.photo}}" alt="">
+		<small>View Larger</small>
+	</a>
+	<h3>{{#link-to "rentals.show" rental.id}}{{rental.name}}{{/link-to}}</h3>
+	<div class="detail address">
+		<span>Address:</span>{{rental.address}}
+	</div>
+	<div class="detail daily_rate">
+		<span>Daily Rate($):</span>{{rental.daily_rate}}
+	</div>
+</article>
